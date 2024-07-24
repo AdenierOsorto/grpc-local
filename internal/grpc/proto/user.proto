@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package grpc;
+
+option go_package = "github.com/AdenierOsorto/grpc-local/internal/grpc/proto";
+
+import "google/protobuf/timestamp.proto";
+
+// Define the message
+message UpdatePrimaryMemberDTO {
+    string title = 1;
+    string gender = 2;
+    string first_name = 3;
+    string last_name = 4;
+    string picture_url = 5;
+    string email = 6;
+    string secondary_email = 7;
+    string landline_phone_number = 8;
+    string landline_phone_country = 9;
+    string landline_phone_number_alt = 10;
+    string landline_phone_country_alt = 11;
+    string mobile_phone_number = 12;
+    string mobile_phone_country = 13;
+    string sms_checkbox_yn = 14;
+    string shirt_size = 15;
+    google.protobuf.Timestamp birth_date = 16;
+    google.protobuf.Timestamp wedding_date = 17;
+    bool reset_wedding_date = 18;
+}
+
+// Define the request message
+message UpdatePrimaryMemberRequest {
+    UpdatePrimaryMemberDTO member = 1;
+}
+
+// Define the response message
+message UpdatePrimaryMemberResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+// Define the service
+service UserService {
+    rpc UpdatePrimaryMember(UpdatePrimaryMemberRequest) returns (UpdatePrimaryMemberResponse);
+}
